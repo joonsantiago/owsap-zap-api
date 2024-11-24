@@ -1,0 +1,20 @@
+
+services:  
+  owasp-zap-api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: owasp-zap-api
+    ports:
+      - '8000:8000'
+    environment:
+      OWASP_API_KEY: OWASP_API_KEY
+      PYTHONUNBUFFERED: 1
+      TZ: America/Sao_Paulo
+    restart: always
+    networks:
+      - owasp_zap_api    
+
+networks:
+  owasp_zap_api:
+    external: true
