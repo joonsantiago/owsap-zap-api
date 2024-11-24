@@ -1,7 +1,14 @@
-api_keys = {
-    "API_KEY_01": "7oDYjo3d9r58EJKYi5x4E8",
-    "API_KEY_02": "mUP7PpTHmFAkxcQLWKMY8t"
-}
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY_001: str = os.getenv('API_KEY_001') if os.getenv('API_KEY_001') else 'API_KEY_001'
+API_KEY_002: str = os.getenv('API_KEY_002') if os.getenv('API_KEY_002') else 'API_KEY_002'
+
+api_keys = {}
+api_keys[API_KEY_001] =  "7oDYjo3d9r58EJKYi5x4E8"
+api_keys[API_KEY_002] =  "mUP7PpTHmFAkxcQLWKMY8t"
 
 users = {
     "7oDYjo3d9r58EJKYi5x4E8": {
