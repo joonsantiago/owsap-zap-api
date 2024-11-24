@@ -9,6 +9,8 @@ services:
       - '8000:8000'
     environment:
       OWASP_API_KEY: OWASP_API_KEY
+      API_KEY_01: API_KEY_01
+      API_KEY_02: API_KEY_02
       PYTHONUNBUFFERED: 1
       TZ: America/Sao_Paulo
     restart: always
