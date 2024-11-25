@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY_001: str = os.getenv('API_KEY_001') if os.getenv('API_KEY_001') else 'API_KEY_001'
-API_KEY_002: str = os.getenv('API_KEY_002') if os.getenv('API_KEY_002') else 'API_KEY_002'
+API_KEY_001: str = os.getenv('API_KEY_01') if os.getenv('API_KEY_01') else 'API_KEY_001'
+API_KEY_002: str = os.getenv('API_KEY_02') if os.getenv('API_KEY_02') else 'API_KEY_002'
 
 api_keys = {}
 api_keys[API_KEY_001] =  "7oDYjo3d9r58EJKYi5x4E8"
