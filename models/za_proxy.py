@@ -99,11 +99,14 @@ class ZaProxy():
             # By default ZAP API client will connect to port 8080
             zap = ZAPv2(apikey=apikey, proxies=LOCAL_PROXIES)
 
-            if context in zap.context.context_list:
-                zap.context.remove_context(context)
-                logger.info(f"Removed from context with successfuly {context}")
+            if context not in zap.context.context_list:
+                context_id = zap.context.new_context(context)
+                # zap.context.remove_context(context)
+                # logger.info(f"Removed from context with successfuly {context}")
+            else:
+                context_details = zap.context.context(context)
+                context_id = context_details['id']
             
-            context_id = zap.context.new_context(context)
 
             domain = urlparse(target)
             domain_path = domain.netloc
