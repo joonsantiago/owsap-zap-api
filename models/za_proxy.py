@@ -215,7 +215,7 @@ class ZaProxy():
             # By default ZAP API client will connect to port 8080
             zap = ZAPv2(apikey=apikey, proxies=LOCAL_PROXIES)
             
-            context_id = zap.context.set_context_in_scope(contextname=context, booleaninscope=True)
+            # context_id = zap.context.set_context_in_scope(contextname=context, booleaninscope=True)
             scan_staus = int(zap.ascan.status(scan_id))
 
             scan_record = ZaProxy.read_scan_id(
