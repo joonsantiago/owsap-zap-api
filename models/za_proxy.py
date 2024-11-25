@@ -17,8 +17,8 @@ load_dotenv()
 logger = logging.getLogger('uvicorn.error')
 
 
-OWASP_PROXY: str = os.getenv('OWASP_PROXY') if os.getenv('OWASP_PROXY') else '127.0.0.0'
-OWASP_PROXY_PORT: str = os.getenv('OWASP_PROXY_PORT') if os.getenv('OWASP_PROXY_PORT') else '127.0.0.0'
+OWASP_PROXY: str = os.getenv('OWASP_PROXY') if os.getenv('OWASP_PROXY') else '127.0.0.1'
+OWASP_PROXY_PORT: str = os.getenv('OWASP_PROXY_PORT') if os.getenv('OWASP_PROXY_PORT') else '8080'
 LOCAL_PROXIES = {'http': f'http://{OWASP_PROXY}:{OWASP_PROXY_PORT}', 'https': f'http://{OWASP_PROXY}:{OWASP_PROXY_PORT}'}
 
 class ZaProxy():
