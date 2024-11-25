@@ -2,15 +2,10 @@ from fastapi import APIRouter, Depends
 from auth import get_user
 
 from models import za_proxy
-from pydantic import BaseModel
+
+from models.dto.dast import ItemDast
 
 router = APIRouter()
-
-class ItemDast(BaseModel):
-    target: str
-    context: str
-    authToken: str | None = None
-    authHeader: str | None = None
 
 
 @router.get("/")
@@ -23,8 +18,7 @@ async def post_route(
     user: dict = Depends(get_user)
 ):
     response = za_proxy.ZaProxy.start_scan_target(
-        payload.target, 
-        payload.context,
+        payload
     )
 
     return response
