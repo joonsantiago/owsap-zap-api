@@ -16,7 +16,12 @@ load_dotenv()
 
 logger = logging.getLogger('uvicorn.error')
 
+
+OWASP_PROXY: str = os.getenv('OWASP_PROXY') if os.getenv('OWASP_PROXY') else '127.0.0.0'
+LOCAL_PROXIES = {'http': f'http://{OWASP_PROXY}:8080', 'https': f'http://{OWASP_PROXY}:8080'}
+
 class ZaProxy():
+
 
     def __init__(self) -> None:
         self.start_time = time.time()
@@ -91,7 +96,7 @@ class ZaProxy():
             context = context_name if utils.isValidStr(context_name) else formatted_time
             
             # By default ZAP API client will connect to port 8080
-            zap = ZAPv2(apikey=apikey)
+            zap = ZAPv2(apikey=apikey, proxies=LOCAL_PROXIES)
 
             if context in zap.context.context_list:
                 zap.context.remove_context(context)
@@ -204,7 +209,7 @@ class ZaProxy():
             context = context_name if utils.isValidStr(context_name) else formatted_time
             
             # By default ZAP API client will connect to port 8080
-            zap = ZAPv2(apikey=apikey)
+            zap = ZAPv2(apikey=apikey, proxies=LOCAL_PROXIES)
             
             context_id = zap.context.set_context_in_scope(contextname=context, booleaninscope=True)
             scan_staus = int(zap.ascan.status(scan_id))
